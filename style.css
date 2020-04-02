@@ -1,0 +1,138 @@
+#container{
+    width:300px;
+    height: 300px;
+    /* background-color: khaki; */
+    background: url("/img/plain-texture.jpg");
+    /* border: double; */
+    box-shadow:-2px 2px 5px darkgray;
+    /* margin: 100px; */
+
+}
+body{
+    background-color: cornsilk;
+}
+h1{
+    font-family: 'Carter One','sans-serif';
+    font-size: 35px;
+    text-align: center;
+    color: blueviolet;
+    text-shadow:2px 3px 2px darkblue;
+}
+table{
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+.move-font{
+    font-family: "Indie Flower",sans-serif;
+
+    font-weight: lighter;
+    font-size: 70px;
+}
+#like{
+
+font-size:20px;
+color:crimson;
+font-family:'Montserrat','sans-serif';
+margin-bottom:8px;
+}
+th,td,tr{
+    height: 30%;
+    width: 30%;
+    padding: 0;
+    margin: 0;
+    border: 1px solid darkgray;
+    border-collapse: collapse;
+    resize: none;
+    box-sizing: border-box;
+}
+th{
+    font-family: 'Montserrat','sans-serif';
+    font-size: 48px;
+    font-weight: 800;
+}
+#warning{
+    padding:0;
+    margin-top:0;
+    font-family: 'Carter One', 'sans-serif';
+    color: brown;
+    font-size:35px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+
+/*COLUMNS*/
+* {
+    box-sizing: border-box;
+    padding:0;
+   
+}
+.col-6 {width: 60%;}
+.col-3 {width: 20%;}
+[class*="col-"] {
+    margin-top: 30px;
+    float: left;
+    padding: 30px;
+    /* border: 8px double darkred; */
+    text-align: center;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.player{
+    font-family: 'Montserrat', 'sans-serif';
+    color: brown;
+    font-size: 48px;
+    font-weight: 800;
+
+}
+#x,#o{
+    color: crimson;
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+
+
+@media only screen and (max-width: 800px){
+    [class*='col-']{
+        width: 100%;
+        margin-top:10px;
+    }
+    #container{
+        /* margin-left: 20px; */
+        /* margin-top: 10px; */
+        width: 300px;
+        height: 300px;
+        margin-top: 50px;
+        padding: 10px;
+    }
+    #main{
+        /* height: 250px;
+        width: 250px; */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+
+#board{
+    display: grid;
+    grid-template-rows: 33.33fr 33.33fr 33.33fr;
+    grid-template-columns: 33.33fr 33.33fr 33.33fr;
+    height: 100%;
+}
+
+#board span{
+    text-align: center;
+    border: 1px solid lightgray;
+    grid-template-columns: 33.33fr 33.33fr 33.33fr;
+
+}

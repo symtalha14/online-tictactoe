@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5175575962132238",
+            enable_page_level_ads: true
+        });
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Carter+One|Indie+Flower|Montserrat|Exo+2" rel="stylesheet">
+    <title>Tic-Tac-Toe</title>
+</head>
+
+<body>
+    <h1 id="head"> TIC-TAC-TOE </h1>
+
+    <div id="main">
+
+        <div id="container">
+            <span id="player"></span>
+            <div id="board">
+
+                <span id="1" onclick="sendMove('1')" class="move-font">O</span>
+                <span id="2" onclick="sendMove('2')"></span>
+                <span id="3" onclick="sendMove('3')"></span>
+
+
+                <span id="4" onclick="sendMove('4')"></span>
+                <span id="5" onclick="sendMove('5')" class="move-font">X</span>
+                <span id="6" onclick="sendMove('6')"></span>
+
+
+                <span id="7" onclick="sendMove('7')"></span>
+                <span id="8" onclick="sendMove('8')"></span>
+                <span id="9" onclick="sendMove('9')"></span>
+
+            </div>
+        </div>
+    </div>
+
+
+    <span>
+        <h2 id="warning"></h2>
+    </span>
+    <div><span class="player" id="x">X</span><br></div>
+    <div><span class="player" id="o">O</span></div>
+
+    <br><br><span id='like'>Please like the Page if You Really Liked the Game ,</span>
+    <div class="fb-like" data-href="https://www.facebook.com/jsscrptapps/?modal=admin_todo_tour" data-width="1600"
+        data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+    <script src="action.js"></script>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <div id='ad'></div>
+    <div id="status"></div>
+    <h3 id="client_id"></h3>
+    <h3 id="room_num"></h3>
+    <input type="text" id="sender">
+    <button id="reg-btn" onclick="register();">Register</button><br>
+    <input type="text" id="msg">
+    <button id="send-btn" onclick="sendMsg();">Send</button>
+    <p id="msgs" style="font-family: sans-serif;padding: 10px;">
+
+        <div>
+            <span id="err" style="color:Red;"></span>
+            <p id="msgs" style="font-family: sans-serif;padding: 10px;">
+
+            </p>
+        </div>
+        <h3>
+            Join Room
+        </h3><br>
+        <input type="text" id="user" placeholder="Enter your name">
+        <input type="text" id="join_room_num" placeholder="Enter room number"><br>
+        <button value="Join" onclick="JoinRoom();" id="join-btn">Join</button>
+
+
+</body>
+
+</html>
