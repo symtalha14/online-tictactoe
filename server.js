@@ -56,12 +56,11 @@ wsServer.on('request', (req) => {
         console.log(client_rooms);
         if (message.type == 'utf8') {
             //if user does not exist
+            var req_to_join = false;
             if (!client_id) {
-                var req_to_join = false;
-                client_id = Math.floor(Math.random() * 8000);
                 if (JSON.parse(message.utf8Data).type == "JOIN") {
                     console.log("Request to join!");
-
+                    req_to_join=true;
                     room_num = JSON.parse(message.utf8Data).room_num;
                     if (room_num in client_rooms) {
                         if (client_rooms[room_num].length < 2) {
@@ -70,9 +69,14 @@ wsServer.on('request', (req) => {
                                 data:JSON.parse(message.utf8Data).user
                             }));
                             connection.sendUTF(JSON.stringify({
+                                type: 'user_id',
+                                data: [client_id, room_num]
+                            }));
+                            connection.sendUTF(JSON.stringify({
                                 type:"opponent",
                                 name:client_info[client_rooms[room_num][0]]
                             }));
+                            client_id = Math.floor(Math.random() * 8000);
                             client_rooms[room_num].push(client_id);
                             room_connections[room_num].push(connection);
                             client_info[client_id]=JSON.parse(message.utf8Data).user;
@@ -89,11 +93,18 @@ wsServer.on('request', (req) => {
                         }
                     } else {
                         console.log("No such Room!");
+                        connection.sendUTF(
+                            JSON.stringify({
+                                type: 'not_sent',
+                                data: "No such room!"
+                            })
+                        );
                     }
                 }
                 client_count++;
                 all_clients_connected.push(client_count);
-                if (!req_to_join) {
+                if ((JSON.parse(message.utf8Data).type == "register")) {
+                    client_id = Math.floor(Math.random() * 8000);
                     room_num = Math.floor(Math.random() * 10000);
                     client_rooms[room_num] = [];
                     //tracking user ids
@@ -102,13 +113,13 @@ wsServer.on('request', (req) => {
                     client_info[client_id]=JSON.parse(message.utf8Data).register;
                     room_connections[room_num]=[];
                     room_connections[room_num].push(connection);
-                }
+                
                 connection.sendUTF(JSON.stringify({
                     type: 'user_id',
                     data: [client_id, room_num]
                 }));
                 console.log((new Date()) + " New User created with user id:" + client_id);
-            }
+            }}
             //if user exists
             else {
                

@@ -17,40 +17,55 @@
 </head>
 
 <body>
-    <h1 id="head"> TIC-TAC-TOE </h1>
+    <center>
+        <span id="logo">TIKKO</span>
+        <h1 id="head"> TIC-TAC-TOE </h1>
+        <hr style="color: #281e3abe;">
+        <p class="intro">
+            Welcome to Tikko! Play the classic Tic-Tac-Toe game. Play with your friends in Real-Time.
+         
+        </p>
+        <hr style="color: #281e3abe;">
 
-    <div id="main">
+    </center>
+    <img src="./img/intro.png" alt="" id="head-img">
+    <center>
+        <button class="btn" onclick="startGame();" id="start">Start</button>
+       </center>
+    <div id="main" style="display: none;">
 
+        <!-- <span id="player"></span> -->
         <div id="container">
-            <span id="player"></span>
-            <div id="board">
+            <table id="board">
+                <tr>
+                    <th id="1" onclick="sendMove('1')" ></th>
+                    <th id="2" onclick="sendMove('2')"></th>
+                    <th id="3" onclick="sendMove('3')"></th>
+                </tr>
 
-                <span id="1" onclick="sendMove('1')" class="move-font">O</span>
-                <span id="2" onclick="sendMove('2')"></span>
-                <span id="3" onclick="sendMove('3')"></span>
+                <tr>
+                    <th id="4" onclick="sendMove('4')"></th>
+                    <th id="5" onclick="sendMove('5')"></th>
+                    <th id="6" onclick="sendMove('6')"></th>
+                </tr>
 
+                <tr>
+                    <th id="7" onclick="sendMove('7')"></th>
+                    <th id="8" onclick="sendMove('8')"></th>
+                    <th id="9" onclick="sendMove('9')"></th>
+                </tr>
 
-                <span id="4" onclick="sendMove('4')"></span>
-                <span id="5" onclick="sendMove('5')" class="move-font">X</span>
-                <span id="6" onclick="sendMove('6')"></span>
-
-
-                <span id="7" onclick="sendMove('7')"></span>
-                <span id="8" onclick="sendMove('8')"></span>
-                <span id="9" onclick="sendMove('9')"></span>
-
-            </div>
+            </table>
         </div>
+        <span id="warning">Your turn</span>
+        <button class="btn" onclick="shuffleBg();" style="float:right;margin-top:5px;">Paper</button>
     </div>
 
 
-    <span>
-        <h2 id="warning"></h2>
-    </span>
-    <div><span class="player" id="x">X</span><br></div>
-    <div><span class="player" id="o">O</span></div>
 
-    <br><br><span id='like'>Please like the Page if You Really Liked the Game ,</span>
+   
+
+    <!-- <br><br><span id='like'>Please like the Page if You Really Liked the Game ,</span> -->
     <div class="fb-like" data-href="https://www.facebook.com/jsscrptapps/?modal=admin_todo_tour" data-width="1600"
         data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
     <script src="action.js"></script>
@@ -63,29 +78,84 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
     <div id='ad'></div>
-    <div id="status"></div>
-    <h3 id="client_id"></h3>
-    <h3 id="room_num"></h3>
-    <input type="text" id="sender">
-    <button id="reg-btn" onclick="register();">Register</button><br>
-    <input type="text" id="msg">
-    <button id="send-btn" onclick="sendMsg();">Send</button>
-    <p id="msgs" style="font-family: sans-serif;padding: 10px;">
+    <h3 id="room_num" style="color: #fff;text-align:center;font-family:montserrat"></h3>
+        <center>
+    <div id="status" ></div>
 
-        <div>
-            <span id="err" style="color:Red;"></span>
+        </center>
+
+    <!-- <h3 id="client_id"></h3> -->
+
+    
+    <center>
+        
+        <hr style="color: #281e3abe;" id="mid">
+        <span id="err" style="color:Red;"></span>
+        <div id="share">
+            <h3>Share</h3>
+            <p class="intro">
+                Share this room number with your friend to invite them to play!
+            </p>
+            <input type="text" disabled id="room_num_share">
+            <a href="" id="whatsapp_share">
+                <img src="./img/wsapp.png" class="logo-sm" alt="">
+            </a>
+        </div>
+        <div id="register">
+            <h3>Create Room</h3>
+            <p class="intro">
+                Enter your name below. We will create a room for you and your friend to play.
+            </p>
+            <input type="text" id="sender" placeholder="Enter your name">
+            <button id="reg-btn" onclick="register();" class="btn">Create</button><br>
+        </div>
+        <br>
+        <hr style="color: #281e3abe;" id="arb">
+
+        <span id="or" style="color: #fff;font-size: 23px;font-family: carter one;font-weight: bold;">OR</span>
+        <hr style="color: #281e3abe;">
+        
+        <div id="join">
+            <h3>
+                Join Room
+            </h3>
+            <p class="intro">
+                Type a room number below to join and play along.
+            </p>
+            <input type="text" id="user" placeholder="Enter your name"><br>
+            <input type="text" id="join_room_num" placeholder="Enter room number"><br>
+            <button value="Join" onclick="JoinRoom();" id="join-btn" class="btn">Join</button>
+
+
+        </div>
+        <input type="text" id="msg" placeholder="Type a message...">
+        <button id="send-btn" onclick="sendMsg();"></button>
+        <div id="chat">
+           <h3>Messages</h3>
             <p id="msgs" style="font-family: sans-serif;padding: 10px;">
-
+               
             </p>
         </div>
-        <h3>
-            Join Room
-        </h3><br>
-        <input type="text" id="user" placeholder="Enter your name">
-        <input type="text" id="join_room_num" placeholder="Enter room number"><br>
-        <button value="Join" onclick="JoinRoom();" id="join-btn">Join</button>
+        <table id="score">
+            <tr>
+                <th id="player-1" style="font-size: 22px;">Player 1</th>
+                <th id="player-2" style="font-size: 22px;">Player 2</th>
+            </tr>
+            <tr>
+                <th id="x" style="font-size: 32px;">0</th>
+                <th id="o" style="font-size: 32px;">0</th>
+            </tr>
+        </table>
+    </center>
 
 
+    <center>
+        <div id="footer">
+            <p style="color: #685e7998;">
+                Developed by <a href="https://www.facebook.com/smatelms" style="text-decoration:none;color: #52456898;font-weight: bold;">SMATELMS Software Solutions</a>
+            </p>
+        </div>
+    </center>
 </body>
 
 </html>
